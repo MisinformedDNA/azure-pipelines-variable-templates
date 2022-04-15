@@ -28,16 +28,18 @@ stages:
         runOnce:
           deploy:
             steps:
-              - template: steps-deployment.yaml
-                parameters:
-                  azureServiceConnection: ${{ variables.azureServiceConnection  }}
-                  webAppName: ${{ variables.webAppName }}
-                  resourceGroup: ${{ variables.resourceGroup}}
-                  location: ${{ variables.location }}
+              - pwsh: echo "Hello"
+              # - template: steps-deployment.yaml
+              #   parameters:
+              #     azureServiceConnection: ${{ variables.azureServiceConnection  }}
+              #     webAppName: ${{ variables.webAppName }}
+              #     resourceGroup: ${{ variables.resourceGroup}}
+              #     location: ${{ variables.location }}
   - stage: test_${{ env }}
     jobs:
       - job: run_integration_test
         variables:          
         - template: vars/vars-${{ env }}.yaml
         steps:
-          - template: steps-integration-tests.yaml
+          - pwsh: echo 'Hello'
+          # - template: steps-integration-tests.yaml
